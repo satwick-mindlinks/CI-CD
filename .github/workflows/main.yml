@@ -42,6 +42,7 @@ jobs:
       - name: Install React dependencies
         run: |
           cd frontend
+          rm -rf node_modules package-lock.json  # Ensure a clean slate
           npm install
 
       - name: Build React App
