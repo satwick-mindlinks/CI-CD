@@ -42,9 +42,6 @@ jobs:
       - name: Install React dependencies
         run: |
           cd frontend
-          if (Test-Path -Path node_modules) { Remove-Item -Recurse -Force node_modules }
-          if (Test-Path -Path package-lock.json) { Remove-Item -Force package-lock.json }
-          if (Test-Path -Path build) { Remove-Item -Recurse -Force build }
           npm install
 
       - name: Build React App
