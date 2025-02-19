@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Changed from ubuntu-latest to windows-latest
 
     steps:
       - name: Checkout code
@@ -52,28 +52,10 @@ jobs:
           cd frontend
           npm run build
 
-      # Zip the Build Directory
-      - name: Zip Build Folder
+      - name: Store Build Artifacts
         run: |
-          Compress-Archive -Path frontend\build\* -DestinationPath build-artifacts\react-build.zip
-
-      # Upload as Artifact (Optional)
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: react-build
-          path: build-artifacts\react-build.zip
-
-      # Commit and Push Build Zip to Repo
-      - name: Commit and Push Build Zip
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add build-artifacts/react-build.zip
-          git commit -m "Add React build zip"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          New-Item -ItemType Directory -Path build-artifacts -Force
+          Copy-Item -Recurse -Path frontend\build\* -Destination build-artifacts\
 
       # Deployment (Optional)
       - name: Deploy Application
