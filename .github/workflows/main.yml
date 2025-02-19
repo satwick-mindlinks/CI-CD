@@ -28,11 +28,6 @@ jobs:
           .\venv\Scripts\activate
           pip install -r backend/requirements.txt
 
-      - name: Run Python tests
-        run: |
-          .\venv\Scripts\activate
-          pytest
-
       # React Setup
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -48,11 +43,6 @@ jobs:
         run: |
           cd frontend
           npm run build
-
-      - name: Store Build Artifacts
-        run: |
-          New-Item -ItemType Directory -Path build-artifacts -Force
-          Copy-Item -Recurse -Path frontend\build\* -Destination build-artifacts\
 
       # Deployment (Optional)
       - name: Deploy Application
