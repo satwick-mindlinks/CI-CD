@@ -50,6 +50,11 @@ jobs:
           cd frontend
           npm run build
 
+      - name: Store Build Artifacts
+        run: |
+          mkdir -p build-artifacts
+          mv frontend/build/* build-artifacts/
+
       # Deployment (Optional)
       - name: Deploy Application
         run: echo "Deployment Successful!"
