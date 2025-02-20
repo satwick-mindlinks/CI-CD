@@ -60,7 +60,7 @@ jobs:
 
       # Optional: Upload the .zip as an artifact
       - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: myapp.zip  # Name of the zip artifact
           path: myapp.zip  # Path to the zip file in the root directory
