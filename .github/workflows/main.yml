@@ -55,7 +55,7 @@ jobs:
       - name: Create a .zip archive of the build folder
         run: |
           cd frontend
-          powershell Compress-Archive -Path C:\Users\hr\OneDrive\Desktop\CICD\myapp.zip
+          powershell Compress-Archive -Path frontend\build\*
         # This will create the .zip file and store it in the root directory of the repository
 
       # Optional: Upload the .zip as an artifact
