@@ -67,4 +67,4 @@ jobs:
           
       # Optional: Deployment step (you can configure this based on your deployment platform)
       - name: Deploy Application
-        run: echo "Deployment Successful!"
+        run: echo "Deployment Successful"
